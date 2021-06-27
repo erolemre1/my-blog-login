@@ -9,7 +9,7 @@
 ## Installation
 Clone the project.
 ```
-git clone https://github.com/erolemre1/random_Profile_Finder.git
+git clone https://github.com/erolemre1/react-my-blog-login.git
 ```
 
 ## Usage
