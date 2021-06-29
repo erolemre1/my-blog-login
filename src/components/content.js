@@ -55,12 +55,17 @@ export class content extends Component {
 
     this.setState({ value: " " })
 
+    const paragraph = document.querySelector(".paragraph").value;
+
+    localStorage.setItem("paragraph",JSON.stringify(""));
+
+
   };
 
   componentDidMount() {
-    let p = JSON.parse(localStorage.getItem('paragraph'));
+    let prgLS = JSON.parse(localStorage.getItem('paragraph'));
     this.setState({
-      value: p
+      value: prgLS
     })
   }
 
