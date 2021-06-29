@@ -17,7 +17,6 @@ class Form extends Component {
 
 
 
-
     let User = this.props.users.filter(user => {
       return (user.authorization === "User" || user.authorization === 'admin') && user.email === this.email.value && user.password === this.password.value
     });

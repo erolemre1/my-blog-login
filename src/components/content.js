@@ -6,7 +6,7 @@ export class content extends Component {
     super(props);
 
     this.state = {
-      value: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam, numquam!',
+      value: '',
       isVisited: true,
 
     };
@@ -35,6 +35,11 @@ export class content extends Component {
     alert.innerHTML = `Your changes have been saved! `;
     setTimeout(function () { alert.innerHTML = "" }, 2000);
 
+    const paragraph = document.querySelector(".paragraph").value;
+
+    localStorage.setItem("paragraph",JSON.stringify(paragraph));
+
+   
   };
 
   onDeleteClick(e) {
@@ -45,22 +50,31 @@ export class content extends Component {
     alert2.innerHTML = `Your text  is deleted! `;
     setTimeout(function () { alert2.innerHTML = "" }, 2000);
 
+ 
+
 
     this.setState({ value: " " })
 
-
   };
+
+  componentDidMount() {
+    let p = JSON.parse(localStorage.getItem('paragraph'));
+    this.setState({
+      value: p
+    })
+  }
 
   render() {
 
     const { isVisited } = this.state;
-
+  
 
     return (
+      
       <div className="container">
         <div>
           <h1><strong> My Thoughts </strong></h1>
-          {isVisited ? <textarea disabled={!this.props.isVisible} className="paragraph" value={this.state.value} onChange={(e) => this.setState({ value: e.target.value })}>
+          {isVisited ? <textarea disabled={!this.props.isVisible}  className="paragraph" value={this.state.value} onChange={(e) => this.setState({ value: e.target.value })}>
           </textarea> : null}
           <div> <p id="alert" className="Alert">
           </p></div>
