@@ -57,7 +57,7 @@ export class content extends Component {
 
     const paragraph = document.querySelector(".paragraph").value;
 
-    localStorage.setItem("paragraph",JSON.stringify(""));
+    localStorage.removeItem("paragraph",JSON.stringify(paragraph));
 
 
   };
