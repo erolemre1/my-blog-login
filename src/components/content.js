@@ -6,7 +6,7 @@ export class content extends Component {
     super(props);
 
     this.state = {
-      value: '',
+      value: " ",
       isVisited: true,
 
     };
@@ -37,9 +37,9 @@ export class content extends Component {
 
     const paragraph = document.querySelector(".paragraph").value;
 
-    localStorage.setItem("paragraph",JSON.stringify(paragraph));
+    localStorage.setItem("paragraph", JSON.stringify(paragraph));
 
-   
+
   };
 
   onDeleteClick(e) {
@@ -48,38 +48,47 @@ export class content extends Component {
 
     let alert2 = document.querySelector('#alert2');
     alert2.innerHTML = `Your text  is deleted! `;
-    setTimeout(function () { alert2.innerHTML = "" }, 2000);
+    setTimeout(function () { alert2.innerHTML = "" },  2000);
 
- 
+
 
 
     this.setState({ value: " " })
 
     const paragraph = document.querySelector(".paragraph").value;
 
-    localStorage.removeItem("paragraph",JSON.stringify(paragraph));
+    localStorage.removeItem("paragraph", JSON.stringify(paragraph));
+
 
 
   };
 
   componentDidMount() {
-    let prgLS = JSON.parse(localStorage.getItem('paragraph'));
-    this.setState({
-      value: prgLS
-    })
+    let paragraph = document.querySelector(".paragraph").value;
+
+    if (localStorage.getItem("paragraph") === null) {
+      paragraph = [paragraph];
+    }
+    else {
+      let prgLS = JSON.parse(localStorage.getItem('paragraph'));
+      this.setState({
+        value: prgLS
+      })
+    }
+    return paragraph;
   }
 
   render() {
 
     const { isVisited } = this.state;
-  
+
 
     return (
-      
+
       <div className="container">
         <div>
           <h1><strong> My Thoughts </strong></h1>
-          {isVisited ? <textarea disabled={!this.props.isVisible}  className="paragraph" value={this.state.value} onChange={(e) => this.setState({ value: e.target.value })}>
+          {isVisited ? <textarea disabled={!this.props.isVisible} className="paragraph" value={this.state.value} onChange={(e) => this.setState({ value: e.target.value })}>
           </textarea> : null}
           <div> <p id="alert" className="Alert">
           </p></div>
