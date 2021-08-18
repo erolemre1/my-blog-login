@@ -20,12 +20,7 @@ npm install
 ```
 
 
-then write this code
-
-```
-npm run start
-
-```
+### Then you can run it with live server.
  
 
 
